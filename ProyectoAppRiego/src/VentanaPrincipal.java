@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -16,6 +17,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        this.sistemaR = GestorDatos.cargarCopiaSeguridad();
         setLocationRelativeTo(null);
         menuModi.setVisible(false);
         menuBorrar.setVisible(false);
@@ -23,6 +25,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuGestion.setVisible(true);
         menuConsum.setVisible(false);
         menuMost.setVisible(false);
+        menuDatos.setVisible(false);
 
     }
 
@@ -30,6 +33,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ZoneGroup = new javax.swing.ButtonGroup();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jLayeredPane3 = new javax.swing.JLayeredPane();
         jLayeredPane4 = new javax.swing.JLayeredPane();
@@ -45,15 +49,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLayeredPane17 = new javax.swing.JLayeredPane();
         volverBorrar2 = new javax.swing.JButton();
         textoCOnsumo = new javax.swing.JTextField();
-        menuModi = new javax.swing.JLayeredPane();
-        agregarA1 = new javax.swing.JLayeredPane();
-        jLabel11 = new javax.swing.JLabel();
-        jLayeredPane15 = new javax.swing.JLayeredPane();
-        volverBorrar = new javax.swing.JButton();
-        cerrarValvula = new javax.swing.JButton();
-        listaMod = new javax.swing.JScrollPane();
-        listaModificar = new javax.swing.JList<>();
-        abrirValvula = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        menuDatos = new javax.swing.JLayeredPane();
+        jLayeredPane19 = new javax.swing.JLayeredPane();
+        jLabel16 = new javax.swing.JLabel();
+        Informe = new javax.swing.JLayeredPane();
+        jLabel17 = new javax.swing.JLabel();
+        guardarCopia1 = new javax.swing.JLayeredPane();
+        jLabel18 = new javax.swing.JLabel();
+        cargarDatos = new javax.swing.JLayeredPane();
+        jLabel19 = new javax.swing.JLabel();
+        jLayeredPane7 = new javax.swing.JLayeredPane();
+        ZEste = new javax.swing.JRadioButton();
+        ZNorte = new javax.swing.JRadioButton();
+        ZOeste = new javax.swing.JRadioButton();
+        ZSur = new javax.swing.JRadioButton();
         menuGestion = new javax.swing.JLayeredPane();
         agregarA = new javax.swing.JLayeredPane();
         jLabel4 = new javax.swing.JLabel();
@@ -66,6 +76,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         listaA = new javax.swing.JLayeredPane();
         jLabel8 = new javax.swing.JLabel();
         jLayeredPane13 = new javax.swing.JLayeredPane();
+        menuModi = new javax.swing.JLayeredPane();
+        agregarA1 = new javax.swing.JLayeredPane();
+        jLabel11 = new javax.swing.JLabel();
+        jLayeredPane15 = new javax.swing.JLayeredPane();
+        volverBorrar = new javax.swing.JButton();
+        cerrarValvula = new javax.swing.JButton();
+        listaMod = new javax.swing.JScrollPane();
+        listaModificar = new javax.swing.JList<>();
+        abrirValvula = new javax.swing.JButton();
         menuBorrar = new javax.swing.JLayeredPane();
         agregarA2 = new javax.swing.JLayeredPane();
         jLabel12 = new javax.swing.JLabel();
@@ -323,109 +342,236 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         textoCOnsumo.setForeground(new java.awt.Color(0, 0, 0));
         menuConsum.add(textoCOnsumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 380, 40));
 
+        jButton1.setBackground(new java.awt.Color(176, 19, 34));
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Abrir/Cerrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        menuConsum.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 130, 30));
+
         jLayeredPane1.add(menuConsum, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 400, 400));
 
-        menuModi.setBackground(new java.awt.Color(204, 255, 255));
-        menuModi.setOpaque(true);
-        menuModi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menuDatos.setBackground(new java.awt.Color(204, 255, 255));
+        menuDatos.setOpaque(true);
+        menuDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        agregarA1.setBackground(new java.awt.Color(18, 101, 101));
-        agregarA1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        agregarA1.setOpaque(true);
-        agregarA1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLayeredPane19.setBackground(new java.awt.Color(18, 101, 101));
+        jLayeredPane19.setOpaque(true);
+
+        jLabel16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Gestion de datos");
+
+        jLayeredPane19.setLayer(jLabel16, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jLayeredPane19Layout = new javax.swing.GroupLayout(jLayeredPane19);
+        jLayeredPane19.setLayout(jLayeredPane19Layout);
+        jLayeredPane19Layout.setHorizontalGroup(
+            jLayeredPane19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(258, Short.MAX_VALUE))
+        );
+        jLayeredPane19Layout.setVerticalGroup(
+            jLayeredPane19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        menuDatos.add(jLayeredPane19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 30));
+
+        Informe.setBackground(new java.awt.Color(18, 101, 101));
+        Informe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Informe.setOpaque(true);
+        Informe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                agregarA1MousePressed(evt);
+                InformeMousePressed(evt);
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Modificar estado");
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Informe");
 
-        agregarA1.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Informe.setLayer(jLabel17, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout agregarA1Layout = new javax.swing.GroupLayout(agregarA1);
-        agregarA1.setLayout(agregarA1Layout);
-        agregarA1Layout.setHorizontalGroup(
-            agregarA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(agregarA1Layout.createSequentialGroup()
+        javax.swing.GroupLayout InformeLayout = new javax.swing.GroupLayout(Informe);
+        Informe.setLayout(InformeLayout);
+        InformeLayout.setHorizontalGroup(
+            InformeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InformeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
-        agregarA1Layout.setVerticalGroup(
-            agregarA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarA1Layout.createSequentialGroup()
+        InformeLayout.setVerticalGroup(
+            InformeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InformeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        menuModi.add(agregarA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
+        menuDatos.add(Informe, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 340, 50));
 
-        jLayeredPane15.setBackground(new java.awt.Color(18, 101, 101));
-        jLayeredPane15.setOpaque(true);
-
-        volverBorrar.setBackground(new java.awt.Color(0, 204, 204));
-        volverBorrar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        volverBorrar.setForeground(new java.awt.Color(0, 0, 0));
-        volverBorrar.setText("VOLVER");
-        volverBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        volverBorrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                volverBorrarActionPerformed(evt);
+        guardarCopia1.setBackground(new java.awt.Color(18, 101, 101));
+        guardarCopia1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardarCopia1.setOpaque(true);
+        guardarCopia1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                guardarCopia1MousePressed(evt);
             }
         });
 
-        jLayeredPane15.setLayer(volverBorrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Guardar los datos");
 
-        javax.swing.GroupLayout jLayeredPane15Layout = new javax.swing.GroupLayout(jLayeredPane15);
-        jLayeredPane15.setLayout(jLayeredPane15Layout);
-        jLayeredPane15Layout.setHorizontalGroup(
-            jLayeredPane15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane15Layout.createSequentialGroup()
-                .addGap(0, 326, Short.MAX_VALUE)
-                .addComponent(volverBorrar))
+        guardarCopia1.setLayer(jLabel18, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout guardarCopia1Layout = new javax.swing.GroupLayout(guardarCopia1);
+        guardarCopia1.setLayout(guardarCopia1Layout);
+        guardarCopia1Layout.setHorizontalGroup(
+            guardarCopia1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(guardarCopia1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
-        jLayeredPane15Layout.setVerticalGroup(
-            jLayeredPane15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(volverBorrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        guardarCopia1Layout.setVerticalGroup(
+            guardarCopia1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, guardarCopia1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        menuModi.add(jLayeredPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 30));
+        menuDatos.add(guardarCopia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 340, 50));
 
-        cerrarValvula.setBackground(new java.awt.Color(0, 204, 204));
-        cerrarValvula.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        cerrarValvula.setForeground(new java.awt.Color(0, 0, 0));
-        cerrarValvula.setText("CERRAR");
-        cerrarValvula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cerrarValvula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cerrarValvulaActionPerformed(evt);
+        cargarDatos.setBackground(new java.awt.Color(18, 101, 101));
+        cargarDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cargarDatos.setOpaque(true);
+        cargarDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cargarDatosMousePressed(evt);
             }
         });
-        menuModi.add(cerrarValvula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, -1));
 
-        listaModificar.setBackground(new java.awt.Color(0, 204, 204));
-        listaModificar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        listaModificar.setForeground(new java.awt.Color(0, 0, 0));
-        listaMod.setViewportView(listaModificar);
+        jLabel19.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Cargar copia de seguridad");
 
-        menuModi.add(listaMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 380, 260));
+        cargarDatos.setLayer(jLabel19, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        abrirValvula.setBackground(new java.awt.Color(0, 204, 204));
-        abrirValvula.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        abrirValvula.setForeground(new java.awt.Color(0, 0, 0));
-        abrirValvula.setText("ABRIR");
-        abrirValvula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        abrirValvula.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout cargarDatosLayout = new javax.swing.GroupLayout(cargarDatos);
+        cargarDatos.setLayout(cargarDatosLayout);
+        cargarDatosLayout.setHorizontalGroup(
+            cargarDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cargarDatosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(158, Short.MAX_VALUE))
+        );
+        cargarDatosLayout.setVerticalGroup(
+            cargarDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cargarDatosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        menuDatos.add(cargarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 340, 50));
+
+        jLayeredPane7.setBackground(new java.awt.Color(0, 204, 204));
+        jLayeredPane7.setOpaque(true);
+
+        ZEste.setBackground(new java.awt.Color(18, 101, 101));
+        ZoneGroup.add(ZEste);
+        ZEste.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        ZEste.setForeground(new java.awt.Color(255, 255, 255));
+        ZEste.setText("Zona Este");
+        ZEste.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abrirValvulaActionPerformed(evt);
+                ZEsteActionPerformed(evt);
             }
         });
-        menuModi.add(abrirValvula, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, -1, -1));
 
-        jLayeredPane1.add(menuModi, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 400, 400));
+        ZNorte.setBackground(new java.awt.Color(18, 101, 101));
+        ZoneGroup.add(ZNorte);
+        ZNorte.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        ZNorte.setForeground(new java.awt.Color(255, 255, 255));
+        ZNorte.setText("Zona Norte");
+        ZNorte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ZNorteActionPerformed(evt);
+            }
+        });
+
+        ZOeste.setBackground(new java.awt.Color(18, 101, 101));
+        ZoneGroup.add(ZOeste);
+        ZOeste.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        ZOeste.setForeground(new java.awt.Color(255, 255, 255));
+        ZOeste.setText("Zona Oeste");
+        ZOeste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ZOesteActionPerformed(evt);
+            }
+        });
+
+        ZSur.setBackground(new java.awt.Color(18, 101, 101));
+        ZoneGroup.add(ZSur);
+        ZSur.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        ZSur.setForeground(new java.awt.Color(255, 255, 255));
+        ZSur.setText("Zona Sur");
+        ZSur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ZSurActionPerformed(evt);
+            }
+        });
+
+        jLayeredPane7.setLayer(ZEste, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane7.setLayer(ZNorte, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane7.setLayer(ZOeste, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane7.setLayer(ZSur, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jLayeredPane7Layout = new javax.swing.GroupLayout(jLayeredPane7);
+        jLayeredPane7.setLayout(jLayeredPane7Layout);
+        jLayeredPane7Layout.setHorizontalGroup(
+            jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane7Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(ZOeste, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addComponent(ZEste, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+            .addGroup(jLayeredPane7Layout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addGroup(jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ZSur, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ZNorte, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jLayeredPane7Layout.setVerticalGroup(
+            jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane7Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(ZNorte)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ZEste)
+                    .addComponent(ZOeste))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ZSur)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        menuDatos.add(jLayeredPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 340, 100));
+
+        jLayeredPane1.add(menuDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 400, 400));
 
         menuGestion.setBackground(new java.awt.Color(204, 255, 255));
         menuGestion.setOpaque(true);
@@ -644,6 +790,108 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(menuGestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 400, 400));
+
+        menuModi.setBackground(new java.awt.Color(204, 255, 255));
+        menuModi.setOpaque(true);
+        menuModi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        agregarA1.setBackground(new java.awt.Color(18, 101, 101));
+        agregarA1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        agregarA1.setOpaque(true);
+        agregarA1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                agregarA1MousePressed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Modificar estado");
+
+        agregarA1.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout agregarA1Layout = new javax.swing.GroupLayout(agregarA1);
+        agregarA1.setLayout(agregarA1Layout);
+        agregarA1Layout.setHorizontalGroup(
+            agregarA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(agregarA1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(132, Short.MAX_VALUE))
+        );
+        agregarA1Layout.setVerticalGroup(
+            agregarA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarA1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        menuModi.add(agregarA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
+
+        jLayeredPane15.setBackground(new java.awt.Color(18, 101, 101));
+        jLayeredPane15.setOpaque(true);
+
+        volverBorrar.setBackground(new java.awt.Color(0, 204, 204));
+        volverBorrar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        volverBorrar.setForeground(new java.awt.Color(0, 0, 0));
+        volverBorrar.setText("VOLVER");
+        volverBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volverBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverBorrarActionPerformed(evt);
+            }
+        });
+
+        jLayeredPane15.setLayer(volverBorrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jLayeredPane15Layout = new javax.swing.GroupLayout(jLayeredPane15);
+        jLayeredPane15.setLayout(jLayeredPane15Layout);
+        jLayeredPane15Layout.setHorizontalGroup(
+            jLayeredPane15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane15Layout.createSequentialGroup()
+                .addGap(0, 326, Short.MAX_VALUE)
+                .addComponent(volverBorrar))
+        );
+        jLayeredPane15Layout.setVerticalGroup(
+            jLayeredPane15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(volverBorrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        menuModi.add(jLayeredPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 30));
+
+        cerrarValvula.setBackground(new java.awt.Color(0, 204, 204));
+        cerrarValvula.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        cerrarValvula.setForeground(new java.awt.Color(0, 0, 0));
+        cerrarValvula.setText("CERRAR");
+        cerrarValvula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cerrarValvula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarValvulaActionPerformed(evt);
+            }
+        });
+        menuModi.add(cerrarValvula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, -1));
+
+        listaModificar.setBackground(new java.awt.Color(0, 204, 204));
+        listaModificar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        listaModificar.setForeground(new java.awt.Color(0, 0, 0));
+        listaMod.setViewportView(listaModificar);
+
+        menuModi.add(listaMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 380, 260));
+
+        abrirValvula.setBackground(new java.awt.Color(0, 204, 204));
+        abrirValvula.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        abrirValvula.setForeground(new java.awt.Color(0, 0, 0));
+        abrirValvula.setText("ABRIR");
+        abrirValvula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        abrirValvula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirValvulaActionPerformed(evt);
+            }
+        });
+        menuModi.add(abrirValvula, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, -1, -1));
+
+        jLayeredPane1.add(menuModi, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 400, 400));
 
         menuBorrar.setBackground(new java.awt.Color(204, 255, 255));
         menuBorrar.setOpaque(true);
@@ -984,10 +1232,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuModi.setVisible(false);
         menuBorrar.setVisible(false);
         menuCreacion.setVisible(false);
+        menuDatos.setVisible(false);
     }//GEN-LAST:event_gestionSisMousePressed
 
     private void gestionDatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionDatMousePressed
-        // TODO add your handling code here:
+
+        menuGestion.setVisible(false);
+        menuConsum.setVisible(false);
+        menuMost.setVisible(false);
+        menuModi.setVisible(false);
+        menuBorrar.setVisible(false);
+        menuCreacion.setVisible(false);
+        menuDatos.setVisible(true);
+
+
     }//GEN-LAST:event_gestionDatMousePressed
     /**
      * Gestion de ventanas
@@ -1002,6 +1260,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuModi.setVisible(false);
         menuBorrar.setVisible(false);
         menuCreacion.setVisible(true);
+        menuDatos.setVisible(false);
     }//GEN-LAST:event_agregarAMousePressed
     /**
      * Gestion de ventanas
@@ -1017,6 +1276,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuModi.setVisible(true);
         menuBorrar.setVisible(false);
         menuCreacion.setVisible(false);
+        menuDatos.setVisible(false);
     }//GEN-LAST:event_modAMousePressed
     /**
      * Gestion de ventanas
@@ -1032,6 +1292,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuModi.setVisible(false);
         menuBorrar.setVisible(true);
         menuCreacion.setVisible(false);
+        menuDatos.setVisible(false);
     }//GEN-LAST:event_borrarAMousePressed
     /**
      * Gestion de ventanas
@@ -1040,16 +1301,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     private void consumoAMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consumoAMousePressed
         // TODO add your handling code here:
-        
+
         int res = sistemaR.calcularConsumoTotal();
         textoCOnsumo.setText(Integer.toString(res));
-        
+
         menuGestion.setVisible(false);
         menuConsum.setVisible(true);
         menuMost.setVisible(false);
         menuModi.setVisible(false);
         menuBorrar.setVisible(false);
         menuCreacion.setVisible(false);
+        menuDatos.setVisible(false);
     }//GEN-LAST:event_consumoAMousePressed
     /**
      * Gestion de ventanas
@@ -1065,6 +1327,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuModi.setVisible(false);
         menuBorrar.setVisible(false);
         menuCreacion.setVisible(false);
+        menuDatos.setVisible(false);
     }//GEN-LAST:event_listaAMousePressed
 
     private void gestionSis1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionSis1MousePressed
@@ -1087,6 +1350,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuModi.setVisible(false);
         menuBorrar.setVisible(false);
         menuCreacion.setVisible(false);
+        menuDatos.setVisible(false);
     }//GEN-LAST:event_volverBorrarActionPerformed
 
     private void agregarA2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarA2MousePressed
@@ -1105,6 +1369,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuModi.setVisible(false);
         menuBorrar.setVisible(false);
         menuCreacion.setVisible(false);
+        menuDatos.setVisible(false);
     }//GEN-LAST:event_volverBorrar1ActionPerformed
 
     private void agregarA3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarA3MousePressed
@@ -1123,6 +1388,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuModi.setVisible(false);
         menuBorrar.setVisible(false);
         menuCreacion.setVisible(false);
+        menuDatos.setVisible(false);
     }//GEN-LAST:event_volverBorrar2ActionPerformed
 
     private void agregarA4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarA4MousePressed
@@ -1141,6 +1407,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuModi.setVisible(false);
         menuBorrar.setVisible(false);
         menuCreacion.setVisible(false);
+        menuDatos.setVisible(false);
     }//GEN-LAST:event_volverMostActionPerformed
     /**
      * Gestion de ventanas
@@ -1155,6 +1422,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuModi.setVisible(false);
         menuBorrar.setVisible(false);
         menuCreacion.setVisible(false);
+        menuDatos.setVisible(false);
     }//GEN-LAST:event_volverCrearActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1212,8 +1480,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de Sistema", JOptionPane.ERROR_MESSAGE);
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(this, "Por favor, seleccione un aspersor de la lista", "Selección Requerida", JOptionPane.WARNING_MESSAGE);
         }
         refrescarM(sistemaR.getListaAspersores());
@@ -1235,13 +1502,86 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de Sistema", JOptionPane.ERROR_MESSAGE);
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(this, "Por favor, seleccione un aspersor de la lista", "Selección Requerida", JOptionPane.WARNING_MESSAGE);
         }
         refrescarM(sistemaR.getListaAspersores());
 
     }//GEN-LAST:event_cerrarValvulaActionPerformed
+
+    private void InformeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InformeMousePressed
+
+        String zona = "";
+
+        if (ZNorte.isSelected()) {
+
+            zona = "Norte";
+
+        } else if (ZSur.isSelected()) {
+
+            zona = "Sur";
+
+        } else if (ZEste.isSelected()) {
+
+            zona = "Este";
+
+        } else if (ZOeste.isSelected()) {
+
+            zona = "oeste";
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona una zona para generar el informe.", "Zona requerida", JOptionPane.WARNING_MESSAGE);
+
+        }
+
+        if (zona != "") {
+
+            try {
+                GestorDatos.exportarInformeTexto(sistemaR, zona);
+                JOptionPane.showMessageDialog(this, "Informe de la zona " + zona + " generado correctamente", "Informe Generado", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Hubo un error al generar el informe.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_InformeMousePressed
+
+    private void guardarCopia1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarCopia1MousePressed
+
+        GestorDatos.guardarCopiaSeguridad(sistemaR);
+        JOptionPane.showMessageDialog(this, "Datos guardados correctamente.", "Guardado exitoso :)", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_guardarCopia1MousePressed
+
+    private void cargarDatosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarDatosMousePressed
+        this.sistemaR = GestorDatos.cargarCopiaSeguridad();
+        JOptionPane.showMessageDialog(this, "Datos cargados correctamente.", "Carga exitosa", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_cargarDatosMousePressed
+
+    private void ZOesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZOesteActionPerformed
+
+    }//GEN-LAST:event_ZOesteActionPerformed
+
+    private void ZNorteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZNorteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ZNorteActionPerformed
+
+    private void ZEsteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZEsteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ZEsteActionPerformed
+
+    private void ZSurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZSurActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ZSurActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(sistemaR.isValvulaGeneral() == true){
+            sistemaR.setValvulaGeneral(false);
+        }else{
+            sistemaR.setValvulaGeneral(true);
+        }
+        textoCOnsumo.setText(Integer.toString(sistemaR.calcularConsumoTotal()));
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void refrescar(ArrayList<Aspersor> contenido) {
 
@@ -1302,6 +1642,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLayeredPane Informe;
+    private javax.swing.JRadioButton ZEste;
+    private javax.swing.JRadioButton ZNorte;
+    private javax.swing.JRadioButton ZOeste;
+    private javax.swing.JRadioButton ZSur;
+    private javax.swing.ButtonGroup ZoneGroup;
     private javax.swing.JButton abrirValvula;
     private javax.swing.JLayeredPane agregarA;
     private javax.swing.JLayeredPane agregarA1;
@@ -1310,11 +1656,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLayeredPane agregarA4;
     private javax.swing.JLayeredPane borrarA;
     private javax.swing.JButton borrarBUtton1;
+    private javax.swing.JLayeredPane cargarDatos;
     private javax.swing.JButton cerrarValvula;
     private javax.swing.JLayeredPane consumoA;
     private javax.swing.JLayeredPane gestionDat;
     private javax.swing.JLayeredPane gestionSis;
     private javax.swing.JLayeredPane gestionSis1;
+    private javax.swing.JLayeredPane guardarCopia1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1323,6 +1672,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1338,11 +1691,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane16;
     private javax.swing.JLayeredPane jLayeredPane17;
     private javax.swing.JLayeredPane jLayeredPane18;
+    private javax.swing.JLayeredPane jLayeredPane19;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
     private javax.swing.JLayeredPane jLayeredPane4;
     private javax.swing.JLayeredPane jLayeredPane5;
     private javax.swing.JLayeredPane jLayeredPane6;
+    private javax.swing.JLayeredPane jLayeredPane7;
     private javax.swing.JLayeredPane listaA;
     private javax.swing.JScrollPane listaBorr;
     private javax.swing.JList<String> listaBorrar1;
@@ -1353,6 +1708,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLayeredPane menuBorrar;
     private javax.swing.JLayeredPane menuConsum;
     private javax.swing.JLayeredPane menuCreacion;
+    private javax.swing.JLayeredPane menuDatos;
     private javax.swing.JLayeredPane menuGestion;
     private javax.swing.JLayeredPane menuModi;
     private javax.swing.JLayeredPane menuMost;
@@ -1368,5 +1724,5 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private SistemaRiego sistemaR = new SistemaRiego();//Creamos un objeto del tipo SistemaRiego para poder acceder a sus metodos
-    private GestorDatos gestorD = null;
+    private GestorDatos gestorD;
 }

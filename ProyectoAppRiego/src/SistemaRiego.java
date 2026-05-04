@@ -20,6 +20,11 @@ public class SistemaRiego implements Serializable {
     public SistemaRiego() {
     }
 
+    public SistemaRiego(ArrayList<Aspersor> aspersores, boolean valvulaGeneral) {
+        this.aspersores = aspersores;
+        this.valvulaGeneral = valvulaGeneral;
+    }
+
     public boolean isValvulaGeneral() {
         return valvulaGeneral;
     }
@@ -38,18 +43,35 @@ public class SistemaRiego implements Serializable {
     public void agregarAspersor(String zona, String caudal) throws Exception {//Crea aspersores
 
         int caudalA = Integer.parseInt(caudal);
+        if (caudalA < 0) {
+            throw new Exception("El caudal no puede ser negativo");
+        }
 
-        if (caudalA < 0) {//Si el caudal es negativo, salta una exception
-            System.out.println("Fallo, numeor negativa");
-            throw new Exception("EL caudal no puede ser negativo");
-        } else {
+        // Buscamos el ID más alto existente para sincronizar los contadores de Aspersor
+        int maxIdEncontrado = -1;
+        for (Aspersor a : aspersores) {
+            // Extraemos la parte numérica (asumiendo formato "AS_XX")
             try {
-                Aspersor a = new Aspersor(zona, caudal);
-                aspersores.add(a);
+                int numId = Integer.parseInt(a.getId().substring(3));
+                if (numId > maxIdEncontrado) {
+                    maxIdEncontrado = numId;
+                }
             } catch (Exception e) {
-                System.out.println("Fallo al crear aspersor");
+                System.out.println("Formato erroneo");
             }
         }
+
+        // Si encontramos aspersores, actualizamos los contadores estáticos de la clase Aspersor
+        // para que el siguiente que se cree sea correcto
+        if (maxIdEncontrado != -1) {
+            int siguiente = maxIdEncontrado + 1;
+            // Sincronizamos con tu sistema de count (unidades) y count2 (decenas)
+            Aspersor.setCount2(siguiente / 10); // Decenas
+            Aspersor.setCount(siguiente % 10);  // Unidades
+        }
+
+        Aspersor nuevo = new Aspersor(zona, caudal);
+        aspersores.add(nuevo);
     }
 
     /**

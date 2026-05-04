@@ -52,6 +52,14 @@ public class Aspersor implements Comparable, Serializable {
         }
     }
 
+    public static void setCount(int n) {
+        count = n;
+    }
+
+    public static void setCount2(int n) {
+        count2 = n;
+    }
+
     public String getZona() {
         return zona;
     }
